@@ -1,0 +1,96 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex1-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+    	</button>
+
+		<a class="navbar-brand" href="http://mtdb.info">
+			<img class="brand-logo" src="http://mtdb.info/assets/images/logo.png">
+		</a>
+
+      	</div>
+
+		<div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+
+						<ul class="nav navbar-nav main-menu">
+				<li> <a  href="http://mtdb.info/movies"
+
+			>
+		Movies
+</a> </li>
+
+
+                    <li> <a  href="http://mtdb.info/series"
+
+			>
+		Series
+</a> </li>
+
+
+                    <li> <a  href="http://mtdb.info/news"
+
+			>
+		News
+</a> </li>
+
+
+                    <li> <a  href="http://mtdb.info/people"
+
+			>
+		People
+</a> </li>
+
+
+                    <li> <a  href="http://mtdb.info/dashboard"
+
+			>
+		Dashboard
+</a> </li>
+
+        		    </ul>
+
+		    <ul class="nav navbar-nav navbar-right logged-in-box">
+		    					<li class="hidden-xs">
+										<%= form_tag(movies_path, :method => "get", id: "searchbar", class: "navbar-form") do %>
+								<!-- text field tag=action,args,identifier,placeholdertext... -->
+
+										<div class="form-group">
+					            <div class="input-group" id="navbar-search">
+												<%= text_field_tag :search, params[:search], class: "search-query form-control", placeholder: "namesearch", type: "search", data: {autocomplete: movies_autocomplete_movie_title_path} %>
+					                <!-- <input class="form-control" placeholder="Search..." autocomplete="off" data-bind="value: query, valueUpdate: 'keyup', hideOnBlur" name="q" type="search"> -->
+					                <span class="input-group-btn">
+					                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> </button>
+					                </span>
+					            </div>
+
+					        <div class="autocomplete-container">
+
+					            <div class="arrow-up"></div>
+					            <section class="auto-heading">Results For <span data-bind="text: query"></span></section>
+
+					            <section class="suggestions" data-bind="foreach: autocompleteResults">
+					                <div class="media">
+					                    <a class="pull-left col-sm-2" data-bind="attr: { href: vars.urls.baseUrl+'/'+vars.trans[type]+'/'+id+'-'+title.replace(/\s+/g, '-').toLowerCase() }">
+					                        <img class="media-object img-responsive" data-bind="attr: { src: poster, alt: title }">
+					                    </a>
+					                    <div class="media-body">
+					                        <a data-bind="attr: { href: vars.urls.baseUrl+'/'+vars.trans[type]+'/'+id+'-'+title.replace(/\s+/g, '-').replace('/', '-').toLowerCase() }"><h6 class="media-heading" data-bind="text: title"></h6></a>
+					                    </div>
+					                </div>
+					            </section>
+
+					        </div>
+
+					    </div>
+					<% end %>			</li>
+
+		   	 						<li><a href="http://mtdb.info/register">Register</a></li>
+					<li><a href="http://mtdb.info/login">Login</a></li>
+		    				</ul>
+	    </div>
+	</div>
+</nav>

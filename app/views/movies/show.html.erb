@@ -1,0 +1,38 @@
+<section class="container" id="content">
+  <div class="row responses">  </div>
+  <div class="col-sm-9">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Movie:</strong>
+      <%= @movie.movie_id %>
+    </p>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </p>
+
+    <p>
+      <strong>Adult:</strong>
+      <%= @movie.adult %>
+    </p>
+
+    <p>
+      <strong>Genre ids:</strong>
+      <%= @movie.genre_ids %>
+    </p>
+
+    <p>
+      <strong>Movie details:</strong>
+      <%= @movie.details %>
+    </p>
+
+    <%= link_to 'Edit', edit_movie_path(@movie) %> |
+    <%= link_to 'Back', movies_path %>
+  </div>
+  <div class="col-sm-3" id="images-col">
+
+  </div>
+
+</section>

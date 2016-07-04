@@ -1,0 +1,45 @@
+#<Tmdb::Movie
+  adult=false,
+  backdrop_path="/8uO0gUM8aNqYLs1OsTBQiXu0fEv.jpg",
+  belongs_to_collection=nil,
+  budget=63000000,
+  homepage="http://www.foxmovies.com/movies/fight-club",
+  id=550,
+  imdb_id="tt0137523",
+  original_language="en",
+  original_title="Fight Club",
+  overview="A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+  popularity=5.950548,
+  poster_path="/811DjJTon9gD6hZ8nCjSitaIXFQ.jpg",
+  release_date="1999-10-14",
+  revenue=100853753,
+  runtime=139,
+  status="Released",
+  tagline="How much can you know about yourself if you've never been in a fight?", title="Fight Club",
+  video=false,
+  vote_average=8.0,
+  vote_count=4945,
+  credits=
+    <Tmdb::Movie cast=[
+      <Tmdb::Movie cast_id=4,
+        character="The Narrator",
+        credit_id="52fe4250c3a36847f80149f3",
+        id=819,
+        name="Edward Norton",
+        order=0>
+    crew=[#
+      <Tmdb::Movie credit_id="56380f0cc3a3681b5c0200be", department="Writing", id=7469, job="Screenplay", name="Jim Uhls", profile_path=nil>,
+      <Tmdb::Movie credit_id="52fe4250c3a36847f8014a47", department="Directing", id=7467, job="Director", name="David Fincher", profile_path="/4jXqVmsLhEhaWIMqARh9ummRiI0.jpg">,
+  genres=[#<Tmdb::Genre id=18, name="Drama">],
+  production_companies=[
+    #<Tmdb::Company name="Regency Enterprises", id=508>,
+    #<Tmdb::Company name="Fox 2000 Pictures", id=711>,
+    #<Tmdb::Company name="Taurus Film", id=20555>,
+    #<Tmdb::Company name="Linson Films", id=54050>,
+    #<Tmdb::Company name="Atman Entertainment", id=54051>,
+    #<Tmdb::Company name="Knickerbocker Films", id=54052>],
+
+    production_countries=[
+      #<Tmdb::Country iso_3166_1="DE", name="Germany">,
+      #<Tmdb::Country iso_3166_1="US", name="United States of America">], spoken_languages=[
+        #<Tmdb::Language iso_639_1="en", name="English">]>

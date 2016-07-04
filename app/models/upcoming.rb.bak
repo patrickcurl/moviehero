@@ -1,0 +1,48 @@
+class Upcoming < ActiveRecord::Base
+  self.table_name = "upcoming"
+  has_one :movie, foreign_key: "movie_id"
+  def self.updateMovies
+    self.truncate!
+    movies = Tmdb::Movie.upcoming(original_language: "en")
+    sleep(2)
+    page=1
+    total_pages=movies.total_pages
+    total_pages.times do
+      if page > 1
+        movies = Tmdb::Movie.upcoming(page: page, original_language: "en")
+        sleep(2)
+      end
+      movies.results.each do |x|
+        @movie = Movie.find_or_create_by(movie_id: x.id)
+        @movie.movie_id = x.id
+        @movie.title = x.title
+        @movie.original_title = x.original_title
+        @movie.adult = x.adult
+        @movie.overview = x.overview
+        @movie.original_language = x.original_language
+        @movie.release_date = x.release_date
+        @movie.genre_ids = x.genre_ids
+        @movie.popularity = x.popularity
+        @movie.vote_count = x.vote_count
+        @movie.vote_average = x.vote_average
+        @movie.poster_path = x.poster_path
+        @movie.backdrop_path = x.backdrop_path
+        # a.videos = Tmdb::Movie.videos(x.id).map{|x| {id: x.id, key: x.key, name: x.name, site: x.site, size: x.size, type: x.type} }
+        @movie.save
+        @upcoming = Upcoming.find_or_create_by(id: x.id, movie_id: x.id)
+        @upcoming.save
+      end
+      page+=1
+    end
+  end
+  def self.truncate!
+    connection.execute("truncate table upcoming ")
+    connection.reset_pk_sequence!('upcoming')
+  end
+  def getMovie
+    return Movie.find_or_create_by(movie_id: self.movie_id)
+  end
+  def self.getLatest(amount=8)
+    return Upcoming.includes(:movie).where.not(movies: {videos: "[]"}).where.not(movies: {videos: nil}).first(amount)
+  end
+end

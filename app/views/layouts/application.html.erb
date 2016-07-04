@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moviehero</title>
+  <link href='//fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Bitter:700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="home" class="nav-trans animate-nav">
+<%= render 'layouts/nav' %>
+
+<%= yield %>
+
+
+<script>
+    // var vars = {
+    //     trans: {
+    //         working: 'Working',
+    //         error:   'Something went wrong, please try again later',
+    //         movie:'movies',
+    //         series: 'series',
+    //         news: 'news',
+    //         prev: 'Prev',
+    //         next: 'Next',
+    //         search: 'Search',
+    //         more: 'more',
+    //         less: 'less',
+    //         pages: 'pages',
+    //         siteName: 'MTDb',
+    //         importFail: 'There was a problem with importing the data, please try again.',
+    //         importSuccess: 'Imported Data Successfully'
+    //     },
+    //     urls: {
+    //         baseUrl: 'http://mtdb.info',
+    //     },
+    //     settings: {
+    //         sliderAutoplay: 1,
+    //         indexPerPage: 18,
+    //         indexDefaultOrder: 'mc_num_of_votesDesc',
+    //     },
+    //     token: 'SaU5zNO3ckQP020DWNnilvMkoHCP64YNPy4X125y'
+    // };
+    //
+    // vars.urls.dashPages = vars.urls.baseUrl + '/dashboard/pages'
+</script>
+<% #<script src="http://mtdb.info/assets/js/scripts.min.js?v11"></script> %>
+
+    <script type="text/javascript" charset="utf-8">
+      $('#search').bind('railsAutocomplete.select', function(event, data){
+      $('#search-form').submit()
+      });
+    </script>
+    <script>
+        // app.perm();
+        // app.user = 0;
+        // ko.applyBindings(app.viewModels.autocomplete, $('.navbar')[0]);
+    </script>
+    <% #<script src="http://mtdb.info/assets/js/slick.min.js"></script> %>
+    <script>
+		// vars.trailersPlayer = 'default';
+    //     ko.applyBindings(app.viewModels.home, $('.content')[0]);
+    </script>
+    <script>
+    // $(document).ready(function() {
+    //   $('.fade').slick({
+    //       dots: true,
+    //       infinite: true,
+    //       speed: 500,
+    //       fade: true,
+    //       slide: 'div',
+    //       cssEase: 'linear'
+    //   });
+    //
+    // });
+    </script>
+    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/5.8/video.min.js"></script>
+
+</body>
+</html>

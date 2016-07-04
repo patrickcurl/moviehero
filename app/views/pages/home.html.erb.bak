@@ -1,0 +1,399 @@
+<body id="home" class="nav-trans animate-nav">
+
+    	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex1-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+    	</button>
+
+		<a class="navbar-brand" href="http://mercury.vebto.com">
+			<img class="brand-logo" src="http://mercury.vebto.com/assets/images/logo.png">
+		</a>
+
+      	</div>
+
+		<div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+			<ul class="nav navbar-nav main-menu">
+				<li> <a  href="http://mercury.vebto.com/movies">Movies</a> </li>
+        <li> <a  href="http://mercury.vebto.com/series">Series</a> </li>
+				<li> <a  href="http://mercury.vebto.com/news">News</a> </li>
+				<li> <a  href="http://mercury.vebto.com/people">People</a> </li>
+				<li> <a  href="http://mercury.vebto.com/dashboard">Dashboard</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right logged-in-box">
+				<li class="hidden-xs">
+					<form method="GET" action="http://mercury.vebto.com/search" accept-charset="UTF-8" class="navbar-form" id="searchbar">
+						<div class="form-group">
+	            <div class="input-group" id="navbar-search">
+                <input class="form-control" placeholder="Search..." autocomplete="off" data-bind="value: query, valueUpdate: 'keyup', hideOnBlur" name="q" type="search">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> </button>
+                </span>
+	          </div>
+
+	         <div class="autocomplete-container">
+
+            <div class="arrow-up"></div>
+            <section class="auto-heading">Results For <span data-bind="text: query"></span></section>
+            <section class="suggestions" data-bind="foreach: autocompleteResults">
+              <div class="media">
+              <a class="pull-left col-sm-2" data-bind="attr: { href: vars.urls.baseUrl+'/'+vars.trans[type]+'/'+id+'-'+title.replace(/\s+/g, '-').toLowerCase() }">
+              <img class="media-object img-responsive" data-bind="attr: { src: poster, alt: title }">
+	          </a>
+					                    <div class="media-body">
+					                        <a data-bind="attr: { href: vars.urls.baseUrl+'/'+vars.trans[type]+'/'+id+'-'+title.replace(/\s+/g, '-').replace('/', '-').toLowerCase() }"><h6 class="media-heading" data-bind="text: title"></h6></a>
+					                    </div>
+					                </div>
+					            </section>
+
+					        </div>
+
+					    </div>
+					</form>				</li>
+
+		   	 						<li><a href="http://mercury.vebto.com/register">Register</a></li>
+					<li><a href="http://mercury.vebto.com/login">Login</a></li>
+		    				</ul>
+	    </div>
+	</div>
+</nav>
+     	<section class="content" data-bind="playVideos">
+
+			<div class="jumbotron">
+			<div class="home-slider" data-bind="slider">
+				<% @np.each do |x| %>
+			  	<div class="slide" style="background: url('http://image.tmdb.org/t/p/w780<%= x.poster_path %>')">
+			  		<div class="overlay">
+			  				<section class="pull-left details-column">
+		              <h2><a href="http://mtdb.info/movies/<%= x.title %>"><%= x.title %></a></h2>
+		              <p><%= x.overview %></p>
+		              <ul class="slider-details list-unstyled">
+		              <li><strong>Stars</strong>Patina Miller, Stef Dawson, Wes Chatham</li>              		                            		                                <li><strong>Genre</strong>Science Fiction,  Adventure,  Action</li>	                            		                            		                        </ul>
+								</section>
+
+		                <div id="trailer-box" class="pull-right trailer-column play" data-source="http://www.youtube.com/embed/Ay-ZN4uRZ-4" data-poster="<%= @base_url %>w300<%= x.poster_path %>">
+	                  <img src="<%= @base_url %>w300<%= x.poster_path %>" class="img-responsive">
+	                  <div class="overlay"></div>
+	                  <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+	                  </div>
+	          </div>
+			  	</div>
+			  	<% end %>
+
+			  				  		<!-- <div class="slide" style="background: url('http://image.tmdb.org/t/p/w780/un7cdRemXAXkoDXYrGfYjKPoUd5.jpg')">
+			  			<div class="overlay">
+			  				<section class="pull-left details-column">
+		                        <h2><a href="http://mtdb.info/movies/12216-the-last-witch-hunter">The Last Witch Hunter</a></h2>
+		                        <p>The modern world holds many secrets, but by far the most astounding is that witches still live among us; vicious supernatural creatures intent on unleashing the Black Death upon the world and putting an end to the human race once and for all. Armies of witch hunters have battled this unnatural enemy for centuries, including Kaulder, a valiant warrior who many years ago slayed the all-powerful Witch Queen, decimating her followers in the process. In the moments right before her death, the Queen cursed Kaulder with immortality, forever separating him from his beloved wife and daughter. Today, Kaulder is the last living hunter who has spent his immortal life tracking down rogue witches, all the while yearning for his long-lost family.</p>
+		                        <ul class="slider-details list-unstyled">
+		                            		                                <li><strong>Directed By</strong>Breck Eisner</li>
+		                            		                            		                                <li><strong>Stars</strong>Michael Caine, Vin Diesel, Rose Leslie</li>
+		                            		                            		                                <li><strong>Genre</strong>Fantasy,  Action,  Adventure</li>
+		                            		                            		                        </ul>
+		                    </section>
+
+		                    	                            <div id="trailer-box" class="pull-right trailer-column play" data-source="http://www.youtube.com/embed/c6cyfWbzLxk" data-poster="http://image.tmdb.org/t/p/w300/v6gmjzI0dws82QaCloHLPqcUM9I.jpg">
+	                                <img src="http://image.tmdb.org/t/p/w300/v6gmjzI0dws82QaCloHLPqcUM9I.jpg" class="img-responsive">
+	                                <div class="overlay"></div>
+	                                <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+	                            </div>
+	                        			  			</div>
+			  		</div> -->
+			  				</div>
+		</div>
+
+    <div class="container">
+	  <div class="col-sm-9">
+			<section class="row  title-sizes">
+				<h2 class="heading"><i class="fa fa-fire"></i> New and Upcoming</h2>
+				<% @upcoming.each do |x| %>
+				<% @videos = Tmdb::Movie.videos(x.id) %>
+				<% @videos.each do |y| if y.type = "Trailer" then %>
+				<% @trailer = y.key %>
+				<% else @trailer = @v.first.key %>
+				<% end %>
+				<% end %>
+				<figure class="col-md-3 col-sm-6  pretty-figure">
+					<div class="play" data-source="https://www.youtube.com/embed/<%= @trailer %>" data-poster="<%= @base_url %>w780<% x.poster_path %>">
+
+					<img src="<%= @base_url %>w342<%= x.poster_path %>" alt="X-Men: Apocalypse" class="img-responsive">
+					<div class="center"><img src="http://mtdb.info/assets/images/play.png"> </div>
+
+										</div>
+          	<figcaption >
+						<a href="http://mtdb.info/movies/4469-xmen-apocalypse">X-Men: Apocalypse</a>
+
+																					</figcaption>
+									</figure>
+						<% end %>
+					<div class="titles-carousel">
+						<% @upcoming.each do |x| %>
+						<% @videos = Tmdb::Movie.videos(x.id) %>
+						<% @videos.each do |y| if y.type = "Trailer" then %>
+						<% @trailer = y.key %>
+						<% else @trailer = @v.first.key %>
+						<% end %>
+						<% end %>
+            <figure class="col-md-3 col-sm-6  pretty-figure">
+              <div class="play"
+								data-source="https://www.youtube.com/embed/<%= @trailer %>" data-poster="<%= @base_url %>w780<%= x.poster_path %>">
+            		<img data-lazy="<%= @base_url %>w342<%= x.poster_path %>" alt="<%= x.title %>" class="img-responsive">
+            		<div class="center">
+									<img src="http://mercury.vebto.com/assets/images/play.png">
+								</div>
+          		</div>
+              <figcaption class="no-rating">
+              	<a href="http://mercury.vebto.com/movies/4469-xmen-apocalypse">X-Men: Apocalypse</a>
+              </figcaption>
+            </figure>
+						<% end %>
+          </div>
+				</section>
+		</div>
+
+
+															<section class="row with-rating title-sizes">
+							<h2 class="heading"><i class="fa fa-thumbs-up"></i> Top Rated</h2>
+
+
+															<div class="titles-carousel">
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/7d_jQycdQGo" data-poster="https://image.tmdb.org/t/p/w780/oGnbq2PxUJpdH6TXQJvTVD7lf4U.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/lIv1QinFqz4dlp5U4lQ6HaiskOZ.jpg" alt="Whiplash" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption >
+                                                <a href="http://mercury.vebto.com/movies/32-whiplash">Whiplash</a>
+                                                                                                    <div class="home-rating" data-bind="raty: 8.9, readOnly: true, stars: 10"></div>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                    </div>
+													</section>
+
+															<section class="row  title-sizes">
+							<h2 class="heading"><i class="fa fa-eye"></i> Most Viewed</h2>
+
+
+															<div class="titles-carousel">
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="//www.youtube.com/embed/09nw1MKJGao" data-poster="https://image.tmdb.org/t/p/w780/fC7xbPVfhzXAZp3iDKqIIHtmvxL.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/igDhbYQTvact1SbNDbzoeiFBGda.jpg" alt="Doctor Who" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/series/2181-doctor-who">Doctor Who</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/BpJYNVhGf1s" data-poster="https://image.tmdb.org/t/p/w780/zqmIGoFVxcQLnJXBqGY2ML8ffIt.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg" alt="Game of Thrones" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/series/2188-game-of-thrones">Game of Thrones</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="//www.youtube.com/embed/SUO8B47XtGY" data-poster="https://image.tmdb.org/t/p/w780/1Qbcet33x5PsaZ1lzEeFWKnFOhD.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/2rOLNdUPahiAq6VuoA1I6sA45cs.jpg" alt="Pretty Little Liars" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/series/2210-pretty-little-liars">Pretty Little Liars</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/68xN_BNYhc4" data-poster="https://image.tmdb.org/t/p/w780/wYl5af8ND2IQd7pmGJurRSjuLla.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/7XFZOcYiBuFDrhqGrEoawF0T30l.jpg" alt="Person of Interest" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/series/2281-person-of-interest">Person of Interest</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/CmOZOk9j0Sk" data-poster="https://image.tmdb.org/t/p/w780/aGveTaWzymRvbwd7JyPtIcDMrbz.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/zSouWWrySXshPCT4t3UKCQGayyo.jpg" alt="X-Men: Apocalypse" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/movies/4469-xmen-apocalypse">X-Men: Apocalypse</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/2Rxoz13Bthc" data-poster="https://image.tmdb.org/t/p/w780/suN6dZYl0DzDuFdKDCzGhhi5SZV.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/ckrTPz6FZ35L5ybjqvkLWzzSLO7.jpg" alt="Warcraft" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/movies/76674-warcraft">Warcraft</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/oddWuCHBmzA" data-poster="https://image.tmdb.org/t/p/w780/eHoVBUrlY7N52uefIGwtQSWjjFj.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/cGgwvGRKanYbp15n9qX7TJy2lUX.jpg" alt="Finding Dory" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/movies/169978-finding-dory">Finding Dory</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                            <figure class="col-lg-2 col-md-3 col-sm-4 pretty-figure">
+                                            <div class="play" data-source="https://www.youtube.com/embed/jWM0ct-OLsM" data-poster="https://image.tmdb.org/t/p/w780/rEiTfsLbve3z6duaS2bj16rvtQR.jpg">
+                                                                                                    <img data-lazy="https://image.tmdb.org/t/p/w342/sM33SANp9z6rXW8Itn7NnG1GOEs.jpg" alt="Zootopia" class="img-responsive">
+                                                    <div class="center"><img src="http://mercury.vebto.com/assets/images/play.png"> </div>
+                                                                                            </div>
+                                                                                        <figcaption class="no-rating">
+                                                <a href="http://mercury.vebto.com/movies/264232-zootopia">Zootopia</a>
+                                                                                            </figcaption>
+                                        </figure>
+                                                                    </div>
+													</section>
+
+									</div>
+
+		<!-- latest news-->
+					<div id="news-container" class="row">
+				<h2 class="heading">latest news</h2>
+
+				<ul class="list-unstyled row">
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/210-first-trailer-for-greg-mottolas-comedy-keeping-up-with-the-joneses"><img data-original="http://media2.firstshowing.net/firstshowing/img9/KeepingupwithJonesesMaintrailertsr1.jpg" alt="First Trailer for Greg Mottola's Comedy 'Keeping Up with the Joneses'" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/210-first-trailer-for-greg-mottolas-comedy-keeping-up-with-the-joneses">First Trailer for Greg Mottola's Comedy 'Keeping Up with the Joneses'</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/211-watch-official-uk-trailer-for-the-girl-with-all-the-gifts-adaptation"><img data-original="http://media2.firstshowing.net/firstshowing/img9/girlwithallthegiftsnewtrailerNewtsr05.jpg" alt="Watch: Official UK Trailer for 'The Girl With All The Gifts' Adaptation" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/211-watch-official-uk-trailer-for-the-girl-with-all-the-gifts-adaptation">Watch: Official UK Trailer for 'The Girl With All The Gifts' Adaptation</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/212-tom-cruise-returns-in-first-trailer-for-jack-reacher-never-go-back"><img data-original="http://media2.firstshowing.net/firstshowing/img9/TomCruiseETJackReachersequelTsr2.jpg" alt="Tom Cruise Returns in First Trailer for 'Jack Reacher: Never Go Back'" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/212-tom-cruise-returns-in-first-trailer-for-jack-reacher-never-go-back">Tom Cruise Returns in First Trailer for 'Jack Reacher: Never Go Back'</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/213-luke-treadway-as-james-bowen-in-a-street-cat-named-bob-trailer"><img data-original="http://media2.firstshowing.net/firstshowing/img9/StreetcatnamedbobUKtrailerSelftsr2.jpg" alt="Luke Treadway as James Bowen in 'A Street Cat Named Bob' Trailer" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/213-luke-treadway-as-james-bowen-in-a-street-cat-named-bob-trailer">Luke Treadway as James Bowen in 'A Street Cat Named Bob' Trailer</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/214-must-watch-full-theatrical-trailer-for-nate-parkers-birth-of-a-nation"><img data-original="http://media2.firstshowing.net/firstshowing/img9/BirthofanationNateparkernewtrailertsr1.jpg" alt="Must Watch: Full Theatrical Trailer for Nate Parker's 'Birth of a Nation'" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/214-must-watch-full-theatrical-trailer-for-nate-parkers-birth-of-a-nation">Must Watch: Full Theatrical Trailer for Nate Parker's 'Birth of a Nation'</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/215-watch-5minute-extended-preview-for-gary-ross-free-state-of-jones"><img data-original="http://media2.firstshowing.net/firstshowing/img9/FreestateofJonesMconEyesExtendtsr02.jpg" alt="Watch: 5-Minute Extended Preview for Gary Ross' 'Free State of Jones'" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/215-watch-5minute-extended-preview-for-gary-ross-free-state-of-jones">Watch: 5-Minute Extended Preview for Gary Ross' 'Free State of Jones'</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/216-first-look-new-batmobile-from-zack-snyders-justice-league-movie"><img data-original="http://media2.firstshowing.net/firstshowing/img9/BatmobileJusticeleaguebigimageTsr3d.jpg" alt="First Look: New Batmobile from Zack Snyder's 'Justice League' Movie" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/216-first-look-new-batmobile-from-zack-snyders-justice-league-movie">First Look: New Batmobile from Zack Snyder's 'Justice League' Movie</a></div>
+							</div>
+						</li>
+
+						<li>
+							<div class="news-item col-sm-3">
+								<a href="http://mercury.vebto.com/news/217-watch-new-featurette-on-recording-the-score-for-swiss-army-man"><img data-original="http://media2.firstshowing.net/firstshowing/img9/SwissarmymanScorefeaturetteTsr02b.jpg" alt="Watch: New Featurette on Recording the Score for 'Swiss Army Man'" class="img-responsive"></a>
+                                <div class="title"><a href="http://mercury.vebto.com/news/217-watch-new-featurette-on-recording-the-score-for-swiss-army-man">Watch: New Featurette on Recording the Score for 'Swiss Army Man'</a></div>
+							</div>
+						</li>
+									</ul>
+			</div>
+				<!-- /latest news-->
+
+	</div>
+</section>
+
+<!-- video modal -->
+<div class="modal fade" id="vid-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        	<button type="button" class="modal-close" data-dismiss="modal" aria-hidden="true">
+                <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                </span>
+            </button>
+            <div class="modal-body"> </div>
+        </div>
+     </div>
+</div>
+<!-- /video modal -->
+
+            <footer id="footer">
+            <section id="top" class="clearfix">
+
+                <div class="col-sm-11 col-md-8 col-sm-offset-1 col-md-offset-3 col-lg-offset-4">
+                    <div class="footer-heading clearfix hidden-xs">
+                            <a href="http://mercury.vebto.com">
+                                <img src="http://mercury.vebto.com/assets/images/logo.png">
+                            </a>
+                        <h2 class="col-md-9 col-sm-8"> - Ultimate Movie and TV Database</h2>
+                    </div>
+
+                    <section id="index">
+                        <ul class="list-inline list-unstyled">
+                            <li><a href="http://mercury.vebto.com/feed/new-and-upcoming">Movies Feed</a></li>
+                            <li><a href="http://mercury.vebto.com/feed/news">News Feed</a></li>
+                            <li><a href="http://mercury.vebto.com/people">People</a></li>
+                            <li><a href="http://mercury.vebto.com/series">Series</a></li>
+                            <li><a href="http://mercury.vebto.com/movies">Movies</a></li>
+                            <li><a href="http://mercury.vebto.com/news">News</a></li>
+                        </ul>
+                    </section>
+
+                    <div class="home-social">
+                        <ul class="list-unstyled list-inline social-icons">
+                                                                                                                                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="bottom" class="clearfix">
+                <div class="col-sm-6" id="copyright">Copyright &#169; <span class="brand">MTDb</span> 2016</div>
+                <ul class="list-unstyled list-inline col-sm-6" id="legal">
+                                        <li><a href="http://mercury.vebto.com/privacy-policy">Privacy Policy</a></li> |
+                                                            <li><a href="http://mercury.vebto.com/tos">Terms of Service</a></li> |
+                            <li><a href="http://mercury.vebto.com/contact">Contact Us</a></li>
+</ul>            </section>
+        </footer>
+
+    <div id="main-loading-outter">
+        <div id="main-loading-container">
+            <div class="loader" id="main-spinner">
+                <div class="inner one"></div>
+                <div class="inner two"></div>
+                <div class="inner three"></div>
+            </div>
+        </div>
+    </div>
+		<%
+		# begin
+		# form_for @movie do |f| %>
+		#   f.autocomplete_field :movie_title, autocomplete_movie_title_movies_path %>
+		# end
+		%>
+		<%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+<!-- text field tag=action,args,identifier,placeholdertext... -->
+<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: movies_autocomplete_movie_title_path} %>
+<%= submit_tag "Search" %>
+<% end %>

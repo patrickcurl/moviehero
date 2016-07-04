@@ -1,0 +1,25 @@
+<section class="row  title-sizes">
+  <h2 class="heading"><i class="fa fa-fire"></i> Top Rated</h2>
+  <% @top_rated.each do |x| %>
+  <% movie = x.movie %>
+  <% trailer = movie.getTrailer %>
+  <% if trailer != nil && trailer != []  then %>
+  <figure class="col-md-3 col-sm-6  pretty-figure">
+    <div class="play youtube-container"
+      data-source="http://www.youtube.com/watch?v=<%= trailer["key"] %>" data-poster="<%= movie.getPoster("w780") %>">
+
+    <img src="<%= movie.getPoster("w342") %>" alt="<%= movie.title %>" class="img-responsive">
+    <div class="center"><img src="http://mtdb.info/assets/images/play.png"> </div>
+
+              </div>
+      <figcaption >
+      <%= link_to movie.title, movie_path(movie) %>
+      <!-- <a href="http://mtdb.info/movies/4469-xmen-apocalypse"><%= movie.title %></a> -->
+
+                                    </figcaption>
+            </figure>
+
+      <% end %>
+      <% end %>
+
+  </section>
