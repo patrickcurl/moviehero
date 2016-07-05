@@ -17,16 +17,24 @@ ActiveRecord::Schema.define(version: 20160630235833) do
   enable_extension "plpgsql"
 
   create_table "credits", force: :cascade do |t|
-    t.integer  "movie_id",   null: false
-    t.integer  "person_id",  null: false
-    t.jsonb    "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "movie_id",     null: false
+    t.integer  "person_id",    null: false
+    t.integer  "cast_id"
+    t.string   "department"
+    t.string   "job"
+    t.string   "character"
+    t.string   "name"
+    t.integer  "order"
+    t.string   "profile_path"
+    t.string   "type"
+    t.string   "slug"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "credits", ["data"], name: "index_credits_on_data", using: :gin
   add_index "credits", ["movie_id"], name: "index_credits_on_movie_id", using: :btree
   add_index "credits", ["person_id"], name: "index_credits_on_person_id", using: :btree
+  add_index "credits", ["slug"], name: "index_credits_on_slug", unique: true, using: :btree
 
   create_table "featured_movies", force: :cascade do |t|
     t.boolean  "now_playing", default: false

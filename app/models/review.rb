@@ -2,12 +2,14 @@
 #
 # Table name: reviews
 #
-#  id          :string           not null
+#  id          :integer          not null, primary key
 #  author_name :string
 #  content     :text
 #  url         :string
-#  movie_id    :integer
+#  movie_id    :integer          not null
 #  user_id     :integer
+#  tmdb_id     :string
+#  imdb_id     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

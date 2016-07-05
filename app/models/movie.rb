@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: movies
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  slug       :string
+#  data       :jsonb
+#  videos     :jsonb
+#  posters    :jsonb
+#  backdrops  :jsonb
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 
 class Movie < ActiveRecord::Base
 extend FriendlyId
@@ -259,26 +274,62 @@ scope :title_like, -> (title) { where("title ilike ?", title)}
     cast = data.credits.cast.map{|x| x.each_pair{|k,v| [k:v]}}.reject{|x| x.nil?}
     crew = data.credits.crew.map{|x| x.each_pair{|k,v| [k:v]}}.reject{|x| x.nil?}
     #return cast
+    return cast
     movie_id = self.id
     cast.each do |x|
+
       #return x.reject{|x| [:credit_id].include?(x)}
       #begin
-      return x
-      pdata = Movie.apiCall("Tmdb::Person.detail(#{x[:id]})").each_pair{|k,v| [k:v]}
-      person = Person.where(id: pdata[:id], imdb_id: pdata[:imdb_id], name: pdata[:name])
-      person.data = pdata.reject{|x| [:id, :imdb_id, :name].include?(x)}
-      character = Credit.where(id: x[:credit_id], movie_id: self.id, person_id: person.id)
+      # if !x[:character].blank? 
+      #   return x[:character]
+      # end 
+     begin
+        pdata = Movie.apiCall("Tmdb::Person.detail(#{x[:id]})").each_pair{|k,v| [k:v]}
+        #return pdata[:imdb_id]
 
+        person = Person.where(id: pdata[:id], imdb_id: pdata[:imdb_id], name: pdata[:name]).first_or_create
+        person.data = pdata.reject{|x| [:id, :imdb_id, :name].include?(x)}
+      
+        person.save
+        if !person.blank? then
+          credit = Credit.where(id: x[:credit_id], movie_id: self.id, person_id: person.id).first_or_create
+        end
+        [:cast_id, :department, :job, :character, :name, :order, :profile_path, :type].each do |y|
+          #return x[y]
+          begin
+            creditProp = y
+            credit.send("#{y}=", x[:y])
+          rescue
+            nil
+          end 
+        end
+        credit.save
+        #return credit
+     rescue
+      nil
+     end
+      #credit.cast_id = x[:cast_id]
+      #credit.department = x[:department]
       # t.string  :id, null: false
       # t.integer :movie_id, null: false
       # t.integer :person_id, null: false
-      # t.boolean :is_director, default: false
-      # t.jsonb   :data
-      return person_data
+      # t.integer :cast_id
+      # t.string :department
+      # t.string :job
+      # t.string :character
+      # t.string :name
+      # t.integer :order
+      # t.string :profile_path
+      # t.string :type #cast/crew
+      # t.string :slug
+      # t.timestamps null: false
+      
+      #return person_data
       #.map{|x| x.each_pair{|k,v| [k:v]}}
-      return person_data
+      #return person_data
       #person = Person.where(id: pdata.)
     end
+
   end
   def mapVideos(data)
     videos = data

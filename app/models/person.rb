@@ -2,23 +2,20 @@
 #
 # Table name: people
 #
-#  id            :integer          not null
-#  name          :string           not null
-#  adult         :boolean
-#  image         :string
-#  biography     :text
-#  full_bio_link :string
-#  awards        :text
-#  birthday      :date
-#  deathday      :date
-#  homepage      :string
-#  birth_place   :string
-#  sex           :string
-#  imdb_id       :integer
-#  slug          :string           not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  slug       :string           not null
+#  imdb_id    :integer
+#  data       :jsonb
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Person < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :name_and_id, use: :slugged
+	validates_presence_of :name, :slug
+	def name_and_id
+    "#{name} #{id}"
+  end
 end

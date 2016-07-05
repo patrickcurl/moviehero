@@ -2,7 +2,7 @@
 #
 # Table name: genres
 #
-#  id         :integer          not null
+#  id         :integer          not null, primary key
 #  name       :string
 #  slug       :string
 #  created_at :datetime         not null

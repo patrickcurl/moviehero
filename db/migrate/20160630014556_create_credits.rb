@@ -12,11 +12,12 @@ class CreateCredits < ActiveRecord::Migration
       t.integer :order
       t.string :profile_path
       t.string :type #cast/crew
+      t.string :slug
       t.timestamps null: false
     end
     execute "ALTER TABLE credits ADD PRIMARY KEY (id);"
     add_index :credits, :movie_id
     add_index :credits, :person_id
-    add_index :credits, :data, using: :gin
+    add_index :credits, :slug, unique: true
   end
 end

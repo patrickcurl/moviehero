@@ -2,7 +2,7 @@
 #
 # Table name: featured_movies
 #
-#  id          :integer          not null
+#  id          :integer          not null, primary key
 #  now_playing :boolean          default(FALSE)
 #  upcoming    :boolean          default(FALSE)
 #  popular     :boolean          default(FALSE)
